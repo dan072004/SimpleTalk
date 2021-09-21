@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+
+  consumer:
+    image: ${DOCKER_REGISTRY-}consumer
+    build:
+      context: .
+      dockerfile: ST-KafkaConsumer/Dockerfile
+
+  producerapi:
+    image: ${DOCKER_REGISTRY-}producerapi
+    build:
+      context: .
+      dockerfile: ST-KafkaProducer/Dockerfile

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumerapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumerapi
+  template:
+    metadata:
+      labels:
+        app: consumerapi
+    spec:
+      containers:
+      - name: consumerapi
+        image: <Image>
+        imagePullPolicy: IfNotPresent          
+        resources:
+          requests:
+              memory: "64Mi"
+              cpu: "0.1"
+          limits:
+            memory: "128Mi"
+            cpu: "0.3"
+        ports:
+        - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: consumerapi-service
+spec:
+  selector:
+    app: consumerapi
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80

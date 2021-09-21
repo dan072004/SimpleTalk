@@ -1,0 +1,87 @@
+services:
+  consumer:
+    build:
+      context: D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer
+      dockerfile: D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer\ST-KafkaConsumer\Dockerfile
+    container_name: consumer
+    depends_on:
+      producerapi:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: dan07consumer
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: 8003
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\daniel.moldovan\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\daniel.moldovan\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  kafka:
+    container_name: kafka
+    depends_on:
+      zookeeper:
+        condition: service_started
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_CREATE_TOPICS: simpletalk_topic:1:1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    image: wurstmeister/kafka
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 9092
+      published: 9092
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: /var/run/docker.sock
+      target: /var/run/docker.sock
+      bind:
+        create_host_path: true
+  producerapi:
+    build:
+      context: D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer
+      dockerfile: D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer\ST-KafkaProducer\Dockerfile
+    container_name: producerapi
+    depends_on:
+      kafka:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: dan07producerapi
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: 8002
+      protocol: tcp
+  zookeeper:
+    container_name: zookeeper
+    image: wurstmeister/zookeeper
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 2181
+      published: 2181
+      protocol: tcp
+networks:
+  default:
+    name: dockercompose14792540066834001235_default

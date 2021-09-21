@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "e3M7CtvslFrj1yLKU8+fatI5rg/0pnUgqMqKEBzbhhjvbm1sW59hf7T7RE9wLo85oEm8wl4xgtRuwu8r7Ty4ww==",
+  "success": true,
+  "projectFilePath": "D:\\Apps\\Kafka\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\daniel.moldovan\\.nuget\\packages\\confluent.kafka\\1.7.0\\confluent.kafka.1.7.0.nupkg.sha512",
+    "C:\\Users\\daniel.moldovan\\.nuget\\packages\\librdkafka.redist\\1.7.0\\librdkafka.redist.1.7.0.nupkg.sha512",
+    "C:\\Users\\daniel.moldovan\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.11.1\\microsoft.visualstudio.azure.containers.tools.targets.1.11.1.nupkg.sha512",
+    "C:\\Users\\daniel.moldovan\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
