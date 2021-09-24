@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Apps\\Kafka\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj": {}
+    "C:\\Apps\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj": {}
   },
   "projects": {
-    "D:\\Apps\\Kafka\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj": {
+    "C:\\Apps\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Apps\\Kafka\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj",
+        "projectUniqueName": "C:\\Apps\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj",
         "projectName": "ST-KafkaProducer",
-        "projectPath": "D:\\Apps\\Kafka\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj",
+        "projectPath": "C:\\Apps\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj",
         "packagesPath": "C:\\Users\\daniel.moldovan\\.nuget\\packages\\",
-        "outputPath": "D:\\Apps\\Kafka\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\obj\\",
+        "outputPath": "C:\\Apps\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

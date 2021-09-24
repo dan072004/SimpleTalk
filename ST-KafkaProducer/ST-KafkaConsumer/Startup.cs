@@ -38,7 +38,6 @@ namespace ST_KafkaConsumer
 				app.UseDeveloperExceptionPage();
 			}
 
-			app.UseHttpsRedirection();
 
 			app.UseRouting();
 

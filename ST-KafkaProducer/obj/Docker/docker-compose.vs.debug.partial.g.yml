@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  consumerapi:
-    image: dan07consumerapi:dev
+  consumer:
+    image: dan07consumer:dev
     build:
       target: base
       labels:
@@ -11,26 +11,24 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_consumer$
     volumes:
-      - D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer\ST-KafkaConsumer:/app
-      - D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer:/src
+      - C:\Apps\SimpleTalk\ST-KafkaProducer\ST-KafkaConsumer:/app
+      - C:\Apps\SimpleTalk\ST-KafkaProducer:/src
       - C:\Users\daniel.moldovan\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\daniel.moldovan\.nuget\packages\:/root/.nuget/packages:ro
-      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
-      - C:\Program Files (x86)\Microsoft\Xamarin\NuGet\:/root/.nuget/fallbackpackages2:ro
+#$nuget_volume_mapping_consumer$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath /root/.nuget/fallbackpackages2  \"/app/bin/Debug/netcoreapp3.1/ST-KafkaConsumer.dll\""
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_consumer$ \"/app/bin/Debug/netcoreapp3.1/ST-KafkaConsumer.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true
-  producer:
-    image: dan07producer:dev
+  producerapi:
+    image: dan07producerapi:dev
     build:
       target: base
       labels:
@@ -39,21 +37,19 @@ services:
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
-      - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+      #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_producerapi$
     volumes:
-      - D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer\ST-KafkaProducer:/app
-      - D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer:/src
+      - C:\Apps\SimpleTalk\ST-KafkaProducer\ST-KafkaProducer:/app
+      - C:\Apps\SimpleTalk\ST-KafkaProducer:/src
       - C:\Users\daniel.moldovan\vsdbg\vs2017u5:/remote_debugger:rw
-      - C:\Users\daniel.moldovan\.nuget\packages\:/root/.nuget/packages:ro
-      - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
-      - C:\Program Files (x86)\Microsoft\Xamarin\NuGet\:/root/.nuget/fallbackpackages2:ro
+#$nuget_volume_mapping_producerapi$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
-      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath /root/.nuget/fallbackpackages2  \"/app/bin/Debug/netcoreapp3.1/ST-KafkaProducer.dll\""
+      #com.microsoft.visualstudio.debuggee.arguments: " $debuggee_arguments_probing_paths_producerapi$ \"/app/bin/Debug/netcoreapp3.1/ST-KafkaProducer.dll\""
       com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
       com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
     tty: true

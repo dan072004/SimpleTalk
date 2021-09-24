@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e3M7CtvslFrj1yLKU8+fatI5rg/0pnUgqMqKEBzbhhjvbm1sW59hf7T7RE9wLo85oEm8wl4xgtRuwu8r7Ty4ww==",
+  "dgSpecHash": "fGYHxXgYmB3qjFmwIUlV+XaER+wNVmdG4q5mJMTYdNFMvk9c5EAGRS+pr5b/B1vEsS2QNhR4LwIlfE1cg5YpTA==",
   "success": true,
-  "projectFilePath": "D:\\Apps\\Kafka\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj",
+  "projectFilePath": "C:\\Apps\\SimpleTalk\\ST-KafkaProducer\\ST-KafkaProducer\\ST-KafkaProducer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\daniel.moldovan\\.nuget\\packages\\confluent.kafka\\1.7.0\\confluent.kafka.1.7.0.nupkg.sha512",
     "C:\\Users\\daniel.moldovan\\.nuget\\packages\\librdkafka.redist\\1.7.0\\librdkafka.redist.1.7.0.nupkg.sha512",

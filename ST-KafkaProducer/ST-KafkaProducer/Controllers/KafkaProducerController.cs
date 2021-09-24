@@ -12,7 +12,7 @@ namespace ST_KafkaProducer.Controllers
 	public class KafkaProducerController : ControllerBase
 	{
 		private readonly ProducerConfig config = new ProducerConfig
-			{ BootstrapServers = "localhost:9092" };
+			{ BootstrapServers = "kafka-broker-1:9092" };
 		private readonly string topic = "simpletalk_topic";
 		[HttpPost]
 		public IActionResult Post([FromQuery] string message)

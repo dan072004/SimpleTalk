@@ -1,34 +1,41 @@
 services:
-  st-kafkaconsumer:
+  consumer:
     build:
-      context: D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer
-      dockerfile: D:\Apps\Kafka\SimpleTalk\ST-KafkaProducer\ST-KafkaConsumer\Dockerfile
+      context: C:\Apps\SimpleTalk\ST-KafkaProducer
+      dockerfile: C:\Apps\SimpleTalk\ST-KafkaProducer\ST-KafkaConsumer\Dockerfile
+    container_name: consumer
+    depends_on:
+      producerapi:
+        condition: service_started
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: https://+:443;http://+:80
-    image: dan07stkafkaconsumer
+      ASPNETCORE_URLS: http://+:80
+    image: dan07consumer
     networks:
       default: null
     ports:
     - mode: ingress
       target: 80
+      published: 8003
       protocol: tcp
+  producerapi:
+    build:
+      context: C:\Apps\SimpleTalk\ST-KafkaProducer
+      dockerfile: C:\Apps\SimpleTalk\ST-KafkaProducer\ST-KafkaProducer\Dockerfile
+    container_name: producerapi
+    depends_on:
+      kafka-broker-1:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: dan07producerapi
+    networks:
+      default: null
+    ports:
     - mode: ingress
-      target: 443
+      target: 80
+      published: 8002
       protocol: tcp
-    volumes:
-    - type: bind
-      source: C:\Users\daniel.moldovan\AppData\Roaming/Microsoft/UserSecrets
-      target: /root/.microsoft/usersecrets
-      read_only: true
-      bind:
-        create_host_path: true
-    - type: bind
-      source: C:\Users\daniel.moldovan\AppData\Roaming/ASP.NET/Https
-      target: /root/.aspnet/https
-      read_only: true
-      bind:
-        create_host_path: true
 networks:
   default:
-    name: dockercompose14792540066834001235_default
+    name: dockercompose735327051788460790_default
