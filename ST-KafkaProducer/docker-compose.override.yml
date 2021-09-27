@@ -1,22 +1,24 @@
 version: '3.4'
 
 services:
-  producerapi:
+  consumer:
+    container_name: consumer
     depends_on:
       - kafka-broker-1
-    container_name: producerapi
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "8002:80"
-  consumer:
-    depends_on:
-      - producerapi
-    container_name: consumer
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
     ports:
       - "8003:80"
+  producerapi:
+    depends_on:
+      - kafka-broker-1
+      - consumer
+    container_name: producerapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8002:80"
+
 
     
